@@ -20,6 +20,9 @@ namespace Sayan.CubeColorCycler
         private float cycleInterval = 3f;
         private float initialDelay = 2f;
         private float timer = 0;
+        /// <summary>
+        /// Initially Store Cube information
+        /// </summary>
 
         void Start()
         {
@@ -31,7 +34,11 @@ namespace Sayan.CubeColorCycler
             }
             StartCoroutine(ColorCycleRoutine());
         }
-
+        /// <summary>
+        /// Coroutine that updates a timer text and rotates colors at fixed intervals.
+        /// Starts with an initial delay.
+        /// </summary>
+        /// <returns></returns>
         IEnumerator ColorCycleRoutine()
         {
             timeText.text = "" + timer + "s";
@@ -46,7 +53,9 @@ namespace Sayan.CubeColorCycler
                 RotateColors();
             }
         }
-
+        /// <summary>
+        /// Colors will be in in cycle mode and used their name also
+        /// </summary>
         void RotateColors()
         {
             Color lastColor = colorCycle[colorCycle.Count - 1];
@@ -61,7 +70,10 @@ namespace Sayan.CubeColorCycler
                 UpdateLabel(i);
             }
         }
-
+        /// <summary>
+        /// Assign color and their respective name
+        /// </summary>
+        /// <param name="index"></param>
         void UpdateLabel(int index)
         {
             if (cubes[index].label != null)
@@ -70,7 +82,11 @@ namespace Sayan.CubeColorCycler
                 cubes[index].label.text = ColorToName(c);
             }
         }
-
+        /// <summary>
+        /// Fetch color name according color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
         string ColorToName(Color color)
         {
             if (color == Color.red) return "Red";
